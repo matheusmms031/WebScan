@@ -1,7 +1,6 @@
 import argparse
-import webconnection as wb
 import visual as vs
-import scanlib as sc
+from scanlib import WebScan
 import time
 
 
@@ -10,20 +9,24 @@ parser.add_argument('-url', action='store',required=True,dest='url',help='Url al
 parser.add_argument('-o', action='store',required=False, dest='output',help='Nome do arquivo para salvamento da sáida das linhas')
 arguments = parser.parse_args()
 
-webscan = sc.WebScan(arguments.url)
-
-print("Starting WebScan 1.0 at ")
+webscan = WebScan(arguments.url, arguments.output)
 print(f"""
-+------------------------+
-|                        |
-|        WebScan         |
-|   \033[1;32mMatheus Magalhães\033[m    |
-|                        |
-+------------------------+
+----------------------------------------------------------------------------     
+      
+ \033[34m######   ######   ######   ######    #####    ####     ####    ##  ##
+   ##     ##         ##     ##       ##       ##  ##   ##  ##   ### ##
+   ##     #####      ##     #####     ####    ##       ######   ######
+   ##     ##         ##     ##           ##   ##  ##   ##  ##   ## ###
+   ##     ######     ##     ######   #####     ####    ##  ##   ##  ##\033[m
+   
+                    Created by: \033[33mMatheus Magalhães M.S\033[m
+                            Version: 1.0.0
+
+-----------------------------------------------------------------------------
 
 Alvo : \033[1;31m{arguments.url}\033[m
-
 """)
+print("\033[31m This may take a while \033[m")
 
+webscan.scan()
 
-webscan.scan_directories()

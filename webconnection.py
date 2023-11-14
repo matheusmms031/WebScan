@@ -19,7 +19,8 @@ def Robots(url):
     else:
         return False
 
-def Wordpress(url):
+def wordpress(url):
+    
     response = requests.get(f"https://{url}/wp-admin.php",headers=header.update({"host":url}))
     if response.status_code == 200:
         diretorios_ok = []
