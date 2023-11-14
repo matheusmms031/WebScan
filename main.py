@@ -1,6 +1,5 @@
 import argparse
-import visual as vs
-from scanlib import WebScan
+from src import WebScanTT
 import time
 
 
@@ -9,7 +8,7 @@ parser.add_argument('-url', action='store',required=True,dest='url',help='Url al
 parser.add_argument('-o', action='store',required=False, dest='output',help='Nome do arquivo para salvamento da sáida das linhas')
 arguments = parser.parse_args()
 
-webscan = WebScan(arguments.url, arguments.output)
+webscan = WebScanTT(arguments.url, arguments.output)
 print(f"""
 ----------------------------------------------------------------------------     
       
