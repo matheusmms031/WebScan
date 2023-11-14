@@ -35,7 +35,7 @@ Biblioteca de Python para scan de sites WEB
         self.wp_response_scan = None
         self.robots_response_scan = None
         self.frameworks = {"wordpress":{"version":None,"exist":None,"plugins":[],"themes":[]}} # Serve para dizer os detalhes de cada framework, O WORDPRESS É BUSCA PADRÃO
-        self.scans = {"wordpress":{"plugins":[],"themes":[]}} # Serve para dizer as funções quais query's utilizar na tentativa de buscar plugins e temas 
+        self.scans = {"wordpress":{"plugins":["https://{url}/wp-content/plugins/"],"themes":["https://{url}/wp-content/themes/"]}} # Serve para dizer as funções quais query's utilizar na tentativa de buscar plugins e temas 
         self.wordpresslist = ["index.php","license.txt","readme.html","wp-activate.php","wp-blog-header.php","wp-comments-post.php","wp-config-sample.php","wp-cron.php","wp-links-opml.php","wp-load.php","wp-login.php","wp-mail.php","wp-settings.php","wp-signup.php","wp-trackback.php","xmlrpc.php"]
         self.header = {"User-Agent":"Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0","Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"}
         response = requests.get(f"https://{url}",headers=self.header.update({"host":url}))
@@ -48,7 +48,7 @@ Biblioteca de Python para scan de sites WEB
         
         # self.wp_response_scan = wordpressdirectories(self.url,self.header,self.wordpresslist)
         # self.robots_response_scan = robotsscan(self.url,self.header)
-        wordpressplugins(self.response["soup"])
+        wordpressplugins(self.url,self.response["soup"])
         # print(self.robots_response_scan)
         # print(self.wp_response_scan)
     
