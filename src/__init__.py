@@ -17,17 +17,17 @@ Biblioteca de Python para scan de sites WEB
     
     
     def __init__(self,url:str,output_name_file:str | None = None) -> None:
-        """ 
-        A Classe necessita da url, porém o `output_name_file` é argumento
-        que se não for colocado as respostas dos scans não serão salvas em
-        arquivos .txt, apenas receberá as respostas como `WebScanTT object`. 
-        
-        [ Arguments ]
-        
-        - URL
-        - OUTPUT_NAME_FILE
-        
         """
+        The above function is the initialization method for a class that performs scanning and analysis
+        on a given URL.
+        
+        Args:
+          url (str): A string representing the URL of the website you want to scan.
+          output_name_file (str | None): The `output_name_file` parameter is a string that represents
+        the name of the output file where the results of the code will be stored. It is an optional
+        parameter and can be set to `None` if no output file name is specified.
+        """
+        
         self.url = url
         self.directories = []
         self.robots = None
@@ -43,14 +43,18 @@ Biblioteca de Python para scan de sites WEB
 
     def scan(self:object):
         """
-        Função que serve apenas para realizar todas as scans do módulo `.utils`
+        The function "scan" calls the "wordpressplugins" function with the given URL and response soup.
+        
+        Args:
+          self (object): The "self" parameter refers to the instance of the class that the method
+        belongs to. It is used to access the attributes and methods of the class.
         """
         
-        # self.wp_response_scan = wordpressdirectories(self.url,self.header,self.wordpresslist)
-        # self.robots_response_scan = robotsscan(self.url,self.header)
+        self.wp_response_scan = wordpressdirectories(self.url,self.header,self.wordpresslist)
+        self.robots_response_scan = robotsscan(self.url,self.header)
         wordpressplugins(self.url,self.response["soup"])
-        # print(self.robots_response_scan)
-        # print(self.wp_response_scan)
+        print(self.robots_response_scan)
+        print(self.wp_response_scan)
     
     # def versionframeworks(self): AINDA PRECISA SER ACABADO
     
