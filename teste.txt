@@ -1,0 +1,61 @@
+URL: www.chromos.com.br
+
+Framework: wordpress
+Version: None
+Exist: True
+
+Plugins:
+- animatto-gallery
+- contact-form-7
+Themes:
+- chromos
+
+Directories:
+- index.php
+- wp-activate.php
+- wp-cron.php
+- wp-links-opml.php
+- wp-load.php
+- wp-login.php
+- wp-signup.php
+-  *
+-  /avaliacao/
+-  /avaliacao-desempenho/
+-  /pesquisa-chromos/
+-  /ava/
+-  /teste-professor/
+-  /retorno-boletos/
+-  /avaliacao/
+-  /wp-content/
+-  /wp-content/uploads/
+-  /wp-admin/
+-  /2-via-boleto/
+-  /sms/
+-  /sistemaenem/
+-  /questionario/
+-  /gabaritoenem--/
+-  /gabaritoenem-homologa/
+-  /gabaritoenem/admin/
+-  /teste1/
+-  /provas-redacao/
+-  /moiphomologa/
+-  /enem51-wp/
+-  /audio-book/
+-  /audio-book2/
+-  /q/
+-  /q
+-  /l
+-  /l/
+-  /telalogin
+-  /telalogin/
+-  /youtube/
+-  /intensivo-enem-2019-2
+-  /intensivo-enem-2019-2/
+-  /responseapi/
+-  /aprovacao/ufmg-2021-1198-aprovacoes/
+-  *.pdf
+-  *.doc
+-  *.docx
+-  *.xls
+-  *.xlsx
+

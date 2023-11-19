@@ -1,0 +1,7 @@
+{
+    "python.analysis.autoImportCompletions": false,
+    "docwriter.style": "Google",
+    "editor.tabSize": 4,
+    "prettier.tabWidth": 2,
+    "prettier.useTabs": false
+}

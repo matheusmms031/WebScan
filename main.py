@@ -1,6 +1,7 @@
 import argparse
 from src import WebScanTT
 import time
+from writefile import writefilescans 
 
 
 parser = argparse.ArgumentParser(description='Web Scan para identificar vulnerabilidades e versões de frameworks',prog='TeteScan')
@@ -29,3 +30,4 @@ print("\033[31m This may take a while \033[m")
 
 webscan.scan()
 
+writefilescans(webscan.url, webscan.frameworks, webscan.directories, "teste")

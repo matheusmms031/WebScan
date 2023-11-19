@@ -2,8 +2,8 @@ import requests
 
 from bs4 import BeautifulSoup 
 
-
-
+    
+  
 def wordpressdirectories(url,header,wordpresslist):
     """
     The function `wordpressdirectories` checks if a WordPress site is accessible and returns a list of
@@ -49,17 +49,67 @@ def wordpressplugins(url,soup:BeautifulSoup):
     from it. In this case, it is used to parse the HTML content of a webpage and find all the `<link
     """
     plugins = {}
-    for link in soup.find_all("link"):
-        href = link["href"]
-        if f"https://{url}/wp-content/plugins/" in href:
-            href_older = href # href sem subtituição, usado exclusivamente para decorar os links relacionados ao plugin X
-            href = href.replace(f"https://{url}/wp-content/plugins/","") # href sem a parte primordial
-            locate = href.find('/') 
-            name_plugin = href[:locate] # Subtituindo por completo tudo que não é o nome do plugin
-            if name_plugin in plugins.keys():
-                plugins[name_plugin]['links'].append(href_older)
-            else:
-                plugins[name_plugin] = {}
-                plugins[name_plugin]['links'] = []
-                plugins[name_plugin]['links'].append(href_older)
+    try:
+        for link in soup.find_all("link"):
+            try:
+                href = link["href"]
+                if f"https://{url}/wp-content/plugins/" in href:
+                    href_older = href  # href sem subtituição, usado exclusivamente para decorar os links relacionados ao plugin X
+                    href = href.replace(f"https://{url}/wp-content/plugins/", "")  # href sem a parte primordial
+                    locate = href.find('/')
+                    name_plugin = href[:locate]  # Subtituindo por completo tudo que não é o nome do plugin
+                    if name_plugin in plugins.keys():
+                        plugins[name_plugin]['links'].append(href_older)
+                    else:
+                        plugins[name_plugin] = {}
+                        plugins[name_plugin]['links'] = []
+                        plugins[name_plugin]['links'].append(href_older)
+            except KeyError as e:
+                print(f"KeyError: {e}. Skipping this link.")
+
+    except Exception as ex:
+        print(f"An unexpected error occurred: {ex}")
+
+    return plugins
             
+            
+def wordpressthemes(url, soup: BeautifulSoup):
+    """
+    The function `wordpressthemes` extracts the names and links of WordPress themes from a given URL
+    and BeautifulSoup object.
+    
+    Args:
+      url: The `url` parameter is a string that represents the URL of the website you want to scrape for
+    WordPress themes.
+      soup (BeautifulSoup): The parameter `soup` is of type `BeautifulSoup`, which is a Python library
+    used for web scraping. It is used to parse the HTML content of a webpage and extract information
+    from it. In this case, it is used to parse the HTML content of a webpage and find all the `<link>`
+    tags.
+
+    Returns:
+      A dictionary containing theme names as keys and a list of links as values.
+    """
+    themes = {}
+
+    try:
+        for link in soup.find_all("link"):
+            try:
+                href = link["href"]
+                if f"https://{url}/wp-content/themes/" in href:
+                    href_older = href  # href sem subtituição, usado exclusivamente para decorar os links relacionados ao tema X
+                    href = href.replace(f"https://{url}/wp-content/themes/", "")  # href sem a parte primordial
+                    locate = href.find('/')
+                    name_theme = href[:locate]  # Subtituindo por completo tudo que não é o nome do tema
+                    if name_theme in themes.keys():
+                        themes[name_theme]['links'].append(href_older)
+                    else:
+                        themes[name_theme] = {}
+                        themes[name_theme]['links'] = []
+                        themes[name_theme]['links'].append(href_older)
+            except KeyError as e:
+                print(f"KeyError: {e}. Skipping this link.")
+
+    except Exception as ex:
+        print(f"An unexpected error occurred: {ex}")
+
+    return themes
